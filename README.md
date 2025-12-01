@@ -8,8 +8,6 @@ Small Java library that lets you:
 * Send hashes to your **Stellar Antivirus backend API** in **batches**
 * Get back verdicts (CLEAN / INFECTED / SUSPICIOUS / UNKNOWN)
 
-You wire this up to your own backend (or the official Stellar Antivirus cloud when ready).
-
 ## Quick start
 
 ```java
