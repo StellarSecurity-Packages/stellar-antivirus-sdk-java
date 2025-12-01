@@ -75,4 +75,39 @@ FileScanResult apk = av.scanApk("/path/app.apk");
 
 ## License
 
-MIT License
+This project is licensed under the **MIT License**.
+
+This means:
+
+- ✔️ You may **use**, **copy**, **modify**, **merge**, **publish**, **distribute**, **sublicense**, and **sell** the software.
+- ✔️ Both **personal** and **commercial** use are allowed.
+- ✔️ You can include the code inside your own closed-source or proprietary product.
+- ✔️ You do **not** need to open-source your modifications.
+
+Requirements:
+
+- 📝 You must include the original **copyright notice**
+- 📝 You must include the **MIT license file** in your distribution
+
+MIT gives maximum freedom while still protecting your rights as the original author.
+
+## About Stellar Security
+
+**Stellar Security** is a Swiss privacy-first technology company building open-source tools for real digital protection.
+
+Our mission:
+
+> **Protect everyone’s privacy and security — without exceptions.**
+
+We develop a unified ecosystem of secure products, including end-to-end encrypted apps, VPN infrastructure, hardened mobile OS, and developer-friendly SDKs.
+
+**Core principles:**
+- 🔐 Zero-knowledge, end-to-end encryption
+- 🇨🇭 Swiss legal protection & neutrality
+- 🛡️ Security-first architecture
+- 🧩 Modular ecosystem — use one product or all
+- 🧪 Open-source transparency
+
+Stellar Security is built for individuals, developers, and companies who demand real privacy and modern security without compromise.
+
+
