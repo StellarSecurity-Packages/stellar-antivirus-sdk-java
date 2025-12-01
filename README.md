@@ -1,53 +1,78 @@
+# **Stellar Antivirus SDK (Java)**
 
-# Stellar Antivirus Java SDK (Core)
+Modern cloud-powered malware detection SDK for developers.\
+Designed for high performance, privacy, batch scanning, and seamless
+integration into Java applications.
 
-Small Java library that lets you:
+## **🔒 What is Stellar Antivirus SDK?**
 
-* Walk a directory (including APKs or any other file type)
-* Hash each file with SHA-256
-* Send hashes to your **Stellar Antivirus backend API** in **batches**
-* Get back verdicts (CLEAN / INFECTED / SUSPICIOUS / UNKNOWN)
+Stellar Antivirus SDK is a lightweight Java library that provides a
+powerful file-scanning engine powered by Stellar's cloud-based threat
+intelligence API.
 
-You wire this up to your own backend (or the official Stellar Antivirus cloud when ready).
+### Key Features
 
-## Quick start
+-   Multi-threaded scanning\
+-   Batch hash submission\
+-   File privacy (only SHA-256 is sent)\
+-   APK scanning\
+-   Cross‑platform\
+-   Lightweight Java API
 
-```java
-import com.stellarsecurity.antivirus.StellarAntivirusClient;
-import com.stellarsecurity.antivirus.config.StellarAntivirusConfig;
-import com.stellarsecurity.antivirus.model.ScanSummary;
+## Installation
 
-import java.nio.file.Paths;
+### Maven
 
-public class Example {
-    public static void main(String[] args) {
-        StellarAntivirusConfig cfg = new StellarAntivirusConfig(
-            "https://your-backend.example.com",
-            "YOUR_API_KEY"
-        );
+``` xml
+<dependency>
+    <groupId>com.stellarsecurity</groupId>
+    <artifactId>stellar-antivirus-sdk</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
 
-        try (StellarAntivirusClient client = new StellarAntivirusClient(cfg)) {
-            ScanSummary summary = client.scanDirectory(Paths.get("/home/user"), true);
+### Gradle
 
-            summary.getResults().forEach(r ->
-                System.out.println(r.getPath() + " => " + r.getVerdict())
-            );
-        }
-    }
+``` gradle
+implementation 'com.stellarsecurity:stellar-antivirus-sdk:1.0.0'
+```
+
+## Basic Usage
+
+``` java
+StellarAV av = new StellarAV("YOUR_API_KEY");
+FileScanResult result = av.scanFile("/path/to/file.exe");
+System.out.println(result.verdict());
+```
+
+## Scan Directory
+
+``` java
+ScanSummary summary = av.scanDirectory("/path");
+System.out.println(summary.threats());
+```
+
+## APK Scanning
+
+``` java
+FileScanResult apk = av.scanApk("/path/app.apk");
+```
+
+## Privacy
+
+-   No files uploaded\
+-   Only SHA-256 hashes leave device\
+-   Zero-knowledge scanning
+
+## API Contract
+
+``` json
+{
+  "api_key": "YOUR_KEY",
+  "hashes": ["sha256"]
 }
 ```
 
-The SDK will:
+## License
 
-1. Walk the directory
-2. Compute SHA‑256 on each file
-3. Send hashes to: `POST {baseUrl}/api/v1/threats/lookup` in batches (default 256 hashes)
-4. Map backend results back to files
-
-Adjust `ThreatLookupClient` and the request/response models if your backend contract differs.
-
-## Threading
-
-* `scanFileAsync(...)` and `scanDirectoryAsync(...)` run on an internal thread pool.
-* You can also pass your own `ExecutorService` to the constructor if you want to integrate
-  with an existing scheduler in your app or SDK.
+MIT License
