@@ -1,11 +1,10 @@
-
 plugins {
     id 'java-library'
     id 'maven-publish'
 }
 
 group = 'com.stellarsecurity'
-version = '0.1.0'
+version = '1.0.0'   // remember to bump this on every new release
 
 java {
     toolchain {
@@ -28,6 +27,50 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+
+            pom {
+                name = 'Stellar Antivirus SDK'
+                description = 'Java SDK for the Stellar Antivirus cloud scanning API.'
+                url = 'https://github.com/StellarSecurity-Packages/stellar-antivirus-sdk-java'
+
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+
+                java {
+                    toolchain {
+                        languageVersion = JavaLanguageVersion.of(11)
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'stellarsecurity'
+                        name = 'Stellar Security'
+                        email = 'info@stellarsecurity.com'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:https://github.com/StellarSecurity-Packages/stellar-antivirus-sdk-java.git'
+                    developerConnection = 'scm:git:ssh://github.com/StellarSecurity-Packages/stellar-antivirus-sdk-java.git'
+                    url = 'https://github.com/StellarSecurity-Packages/stellar-antivirus-sdk-java'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "MavenCentral"
+            url = uri("https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/")
+            credentials {
+                username = project.findProperty("centralPortalUsername") ?: ""
+                password = project.findProperty("centralPortalPassword") ?: ""
+            }
         }
     }
 }

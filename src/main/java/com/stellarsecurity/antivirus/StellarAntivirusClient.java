@@ -202,11 +202,20 @@ public class StellarAntivirusClient implements AutoCloseable {
                 continue;
             }
             switch (r.getVerdict()) {
-                case INFECTED -> infected++;
-                case SUSPICIOUS -> suspicious++;
-                case CLEAN -> clean++;
-                default -> unknown++;
+                case INFECTED:
+                    infected++;
+                    break;
+                case SUSPICIOUS:
+                    suspicious++;
+                    break;
+                case CLEAN:
+                    clean++;
+                    break;
+                default:
+                    unknown++;
+                    break;
             }
+
         }
 
         return new ScanSummary(results, infected, suspicious, clean, unknown, startedAt, Instant.now());

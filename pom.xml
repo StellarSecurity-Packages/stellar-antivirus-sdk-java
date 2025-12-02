@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Change to your organization -->
+    <groupId>com.stellarsecurity</groupId>
+    <artifactId>stellar-antivirus-sdk</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>Stellar Antivirus SDK</name>
+    <description>Lightweight cross-platform threat-scanning SDK with batch hashing, APK scanning, and server-side lookup.</description>
+    <url>https://github.com/StellerSecurity/Stellar.Antivirus.SDK</url>
+
+    <!-- License required for Maven Central -->
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- Developer info -->
+    <developers>
+        <developer>
+            <id>stellar security</id>
+            <name>stellar security</name>
+            <organization>Stellar Security</organization>
+            <organizationUrl>https://stellarsecurity.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <!-- Link to GitHub -->
+    <scm>
+        <url>https://github.com/StellerSecurity/Stellar.Antivirus.SDK</url>
+        <connection>scm:git:https://github.com/StellerSecurity/Stellar.Antivirus.SDK.git</connection>
+        <developerConnection>scm:git:ssh://github.com/StellerSecurity/Stellar.Antivirus.SDK.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <!-- Build plugins for Maven Central -->
+    <build>
+        <plugins>
+
+            <!-- Create sources.jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Create javadoc.jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadoc</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
+ecr
